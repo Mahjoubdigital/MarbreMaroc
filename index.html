@@ -93,7 +93,7 @@
         .mobile-menu-btn.active .hamburger::before { transform: rotate(45deg); top: 0; }
         .mobile-menu-btn.active .hamburger::after { transform: rotate(-45deg); top: 0; }
 
-        /* HERO (margen superior aumentado) */
+        /* HERO */
         .hero { position: relative; width: 100%; height: 100vh; height: 100dvh; overflow: hidden; }
         .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .hero-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.2s ease-in-out; background-size: cover; background-position: center; }
@@ -103,7 +103,6 @@
         .hero-content h1 { font-size: clamp(1.9rem, 5vw, 3.2rem); margin-bottom: 14px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); line-height: 1.15; animation: fadeInUp 1s ease; font-weight: 800; }
         .hero-content p { font-size: clamp(0.95rem, 2.2vw, 1.2rem); margin-bottom: 28px; line-height: 1.5; animation: fadeInUp 1s ease 0.2s both; opacity: 0.95; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); max-width: 700px; margin-left: auto; margin-right: auto; }
         .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 1s ease 0.4s both; }
-        /* BOTONES: texto reducido */
         .btn { padding: 13px 30px; border: none; border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; text-align: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); }
         .btn-primary:hover { transform: translateY(-3px); }
@@ -217,7 +216,6 @@
         .chat-message .content { max-width: 80%; padding: 13px 17px; border-radius: 18px; font-size: 0.93rem; line-height: 1.5; word-wrap: break-word; white-space: pre-line; }
         .chat-message.bot .content { background: var(--bg-light); color: var(--text-dark); border-bottom-left-radius: 6px; }
         .chat-message.user .content { background: var(--accent); color: var(--white); border-bottom-right-radius: 6px; }
-        /* BOTONES RÁPIDOS DEL CHAT */
         .quick-replies { display: flex; flex-wrap: wrap; gap: 8px; margin: -6px 0 16px 44px; }
         .quick-reply { background: var(--white); border: 2px solid var(--accent); color: var(--accent); padding: 8px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
         .quick-reply:hover { background: var(--accent); color: var(--white); }
@@ -282,11 +280,7 @@
             .hero-content h1 { font-size: 1.7rem; }
         }
         .mobile-only-item { display: none; }
-        .desktop-only { display: inline-flex !important; }
-        @media (max-width: 768px) {
-            .mobile-only-item { display: block; }
-            .desktop-only { display: none !important; }
-        }
+        @media (max-width: 768px) { .mobile-only-item { display: block; } }
     </style>
 </head>
 <body>
@@ -320,8 +314,9 @@
                 </li>
             </ul>
             <div class="nav-right">
-                <button class="install-btn desktop-only" onclick="installApp()">📲 <span data-i18n="install_app">Installer l'App</span></button>
-                <a href="https://wa.seo-local.click" target="_blank" class="nav-whatsapp desktop-only">
+                <!-- FIX #4: sin clase desktop-only (oculto hasta ser instalable) -->
+                <button class="install-btn" onclick="installApp()">📲 <span data-i18n="install_app">Installer l'App</span></button>
+                <a href="https://wa.seo-local.click" target="_blank" class="nav-whatsapp">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     <span class="wa-text" data-i18n="nav_whatsapp">Demander un Devis</span>
                 </a>
@@ -332,8 +327,9 @@
                         <span class="arrow"></span>
                     </button>
                     <div class="lang-menu">
-                        <button onclick="changeLanguage('es')" id="btn-es"><span class="flag">🇪</span> Español</button>
-                        <button onclick="changeLanguage('fr')" class="active" id="btn-fr"><span class="flag">🇫🇷</span> Français</button>
+                        <!-- FIX #3: bandera ES corregida -->
+                        <button onclick="changeLanguage('es')" id="btn-es"><span class="flag">🇪🇸</span> Español</button>
+                        <button onclick="changeLanguage('fr')" class="active" id="btn-fr"><span class="flag">🇫</span> Français</button>
                         <button onclick="changeLanguage('en')" id="btn-en"><span class="flag">🇬🇧</span> English</button>
                     </div>
                 </div>
@@ -406,12 +402,11 @@
         </div>
     </section>
 
-    <!-- RESEÑAS -->
     <section id="reviews" style="background: var(--bg-light);">
         <div class="container">
             <div class="section-title">
                 <h2 data-i18n="reviews_title">Avis de nos Clients</h2>
-                <p data-i18n="reviews_subtitle">La opinión de quienes ya confían en nosotros</p>
+                <p data-i18n="reviews_subtitle">L'opinion de ceux qui nous font déjà confiance</p>
             </div>
             <div class="reviews-grid" id="reviews-grid"></div>
         </div>
@@ -549,7 +544,7 @@
 
         const reviewsData = [
             { name:'Ahmed El Fassi', role:{es:'Arquitecto – Casablanca',fr:'Architecte – Casablanca',en:'Architect – Casablanca'}, text:{es:'Calidad excepcional del mármol y asesoramiento profesional. El pedido llegó a tiempo y el resultado fue perfecto.',fr:'Qualité de marbre exceptionnelle et conseil professionnel. Commande livrée à temps, résultat parfait.',en:'Exceptional marble quality and professional advice. Order delivered on time, perfect result.'} },
-            { name:'Sophie Laurent', role:{es:'Diseñadora de interiores – París',fr:"Designer d'intérieur – Paris",en:'Interior Designer – Paris'}, text:{es:'El granito azul que recibí es aún más bonito que en las fotos. Servicio cercano por WhatsApp y precios competitivos.',fr:'Le granit bleu reçu est encore plus beau qu\'en photo. Service proche via WhatsApp et prix compétitifs.',en:'The blue granite I received is even more beautiful than in the photos. Friendly WhatsApp service and competitive prices.'} },
+            { name:'Sophie Laurent', role:{es:'Diseñadora de interiores – París',fr:"Designer d'intérieur – Paris",en:'Interior Designer – Paris'}, text:{es:'El granito azul que recibí es aún más bonito que en las fotos. Servicio cercano por WhatsApp y precios competitivos.',fr:"Le granit bleu reçu est encore plus beau qu'en photo. Service proche via WhatsApp et prix compétitifs.",en:'The blue granite I received is even more beautiful than in the photos. Friendly WhatsApp service and competitive prices.'} },
             { name:'Karim Benjelloun', role:{es:'Promotor inmobiliario – Tánger',fr:'Promoteur immobilier – Tanger',en:'Real Estate Developer – Tangier'}, text:{es:'Trabajo con ellos en varios proyectos. Siempre cumplen los plazos y la piedra natural es de primera calidad.',fr:'Je travaille avec eux sur plusieurs projets. Délais toujours respectés et pierre naturelle de première qualité.',en:'I work with them on several projects. Deadlines always met and top-quality natural stone.'} }
         ];
 
@@ -585,6 +580,7 @@
                 bot_varieties:"Variedades", bot_colors_q:"Elige un color para ver los detalles:",
                 bot_prices:"Los precios dependen de la variedad y las medidas. Te recomiendo solicitar un presupuesto gratuito.",
                 chatbot_thanks:"Gracias por tu mensaje. Te responderemos lo antes posible.",
+                wa_lead_title:"Nueva solicitud - Marbre Maroc",
                 ios_hint:"En iPhone: pulsa Compartir y 'Añadir a pantalla de inicio' para usarla como app."
             },
             fr: {
@@ -616,6 +612,7 @@
                 bot_varieties:"Variétés", bot_colors_q:"Choisissez une couleur pour voir les détails:",
                 bot_prices:"Les prix dépendent de la variété et des mesures. Je vous recommande de demander un devis gratuit.",
                 chatbot_thanks:"Merci pour votre message. Nous vous répondrons dans les plus brefs délais.",
+                wa_lead_title:"Nouvelle demande - Marbre Maroc",
                 ios_hint:"Sur iPhone: appuyez sur Partager puis 'Ajouter à l'écran d'accueil' pour l'utiliser comme app."
             },
             en: {
@@ -641,12 +638,13 @@
                 bot_q_product:"Which product are you interested in for your quote?", bot_q_variety:"Which color or variety do you prefer?", bot_q_name:"Perfect. What is your name?",
                 bot_q_phone:"Thank you. Could you give me your phone number?", bot_bad_phone:"The number doesn't seem valid. Write it with digits, e.g. +212 6XX XXX XXX.",
                 bot_q_details:"Any additional details (measurements, quantity, city)? Or press Skip.", bot_skip:"Skip",
-                bot_sum_title:"Summary of your request:", bot_send_btn:" Send via WhatsApp", bot_sent:"Opening WhatsApp with your data. Thank you!",
+                bot_sum_title:"Summary of your request:", bot_send_btn:"📤 Send via WhatsApp", bot_sent:"Opening WhatsApp with your data. Thank you!",
                 bot_hours:"We are open Monday to Friday from 9:00 AM to 6:00 PM.", bot_contact:"We are in Tangier, Morocco.\nTel: +212 670 964 030\nEmail: contact@safamar.ma",
                 bot_fallback:"I can help you with our products, varieties and quotes. Choose an option:",
                 bot_varieties:"Varieties", bot_colors_q:"Choose a color to see the details:",
                 bot_prices:"Prices depend on the variety and measurements. I recommend requesting a free quote.",
                 chatbot_thanks:"Thank you for your message. We will get back to you as soon as possible.",
+                wa_lead_title:"New request - Marbre Maroc",
                 ios_hint:"On iPhone: tap Share then 'Add to Home Screen' to use it as an app."
             }
         };
@@ -656,10 +654,12 @@
         let slideInterval = null;
         let activeModalProduct = null;
         let deferredPrompt = null;
-        const botCtx = { step: 'none', lead: {} };
+        const botCtx = { step: 'none', lead: {}, lastProduct: null };
 
+        /* FIX #2: resetChat() al cargar para que el chat nunca esté vacío */
         document.addEventListener('DOMContentLoaded', () => {
             changeLanguage(currentLang);
+            resetChat();
             initHeroSlider();
             initPWA();
         });
@@ -731,7 +731,7 @@
             document.getElementById('modalDesc').textContent = p.desc[currentLang];
             document.getElementById('modalCategory').textContent = category === 'marbre' ? t.category_marble : t.category_granite;
             document.getElementById('modalVarieties').innerHTML = p.varieties[currentLang].map(v => `<span class="variety-tag">${v}</span>`).join('');
-            const wa = encodeURIComponent(currentLang==='fr' ? `Bonjour, je suis intéressé par un devis pour : ${p.name.fr}` : currentLang==='es' ? `Hola, me interesa solicitar presupuesto para: ${p.name.es}` : `Hello, I am interested in a quote for: ${p.name.en}`);
+            const wa = encodeURIComponent(currentLang === 'fr' ? `Bonjour, je suis intéressé par un devis pour : ${p.name.fr}` : currentLang === 'es' ? `Hola, me interesa solicitar presupuesto para: ${p.name.es}` : `Hello, I am interested in a quote for: ${p.name.en}`);
             document.getElementById('modalWaBtn').href = `https://wa.me/212670964030?text=${wa}`;
         }
         function openProductModal(category, id) { activeModalProduct = { category, id }; populateModal(category, id); document.getElementById('productModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
@@ -760,22 +760,24 @@
         function listColors(cat) { const t = translations[currentLang]; return { text: t.bot_colors_q, replies: productsData[cat].map(p => ({ label: p.name[currentLang], value: `##P:${cat}:${p.id}##` })) }; }
         function varietyReplies(cat, id) { const t = translations[currentLang]; const p = findP(cat, id);
             const r = p.varieties[currentLang].slice(0, 4).map(v => ({ label: v, value: v })); r.push({ label: t.bot_skip, value: '##SKIP##' }); return r; }
-        function productInfo(p) { const t = translations[currentLang]; botCtx.lead.producto = p.name[currentLang]; botCtx.lead.cat = p.cat;
+        /* FIX #5: guarda lastProduct */
+        function productInfo(p) { const t = translations[currentLang]; botCtx.lastProduct = p; botCtx.lead.producto = p.name[currentLang]; botCtx.lead.cat = p.cat;
             return { text: `${p.name[currentLang]}.\n${p.desc[currentLang]}\n\n${t.bot_varieties}: ${p.varieties[currentLang].join(', ')}`, replies: [{ label: t.qr_quote, value: '##QUOTE_NOW##' }, { label: t.bot_colors_q, value: `##COLORS:${p.cat}##` }, ...menuReplies().slice(3)] }; }
         function startQuote(p) { const t = translations[currentLang];
             if (p) { botCtx.lead.producto = p.name[currentLang]; botCtx.lead.cat = p.cat; botCtx.step = 'variety'; return { text: t.bot_q_variety, replies: varietyReplies(p.cat, p.id) }; }
             botCtx.step = 'product'; return { text: t.bot_q_product, replies: [{ label: t.opt_marble, value: '##CAT:marbre##' }, { label: t.opt_granite, value: '##CAT:granit##' }] }; }
         function confirmLead() { const t = translations[currentLang]; const L = botCtx.lead; botCtx.step = 'confirm';
             return { text: `${t.bot_sum_title}\n• ${t.form_product}: ${L.producto || '-'}\n• ${t.bot_varieties}: ${L.variedad || '-'}\n• ${t.form_name}: ${L.nombre || '-'}\n• ${t.form_phone}: ${L.telefono || '-'}\n• ${t.form_message}: ${L.mensaje || '-'}`, replies: [{ label: t.bot_send_btn, value: '##SEND##' }, { label: '🔄', value: '##RESTART##' }] }; }
-        function sendLeadWhatsApp() { const L = botCtx.lead;
-            const msg = `Nouvelle demande - Marbre Maroc\nProduit: ${L.producto || '-'}\nVariete: ${L.variedad || '-'}\nNom: ${L.nombre || '-'}\nTelephone: ${L.telefono || '-'}\nDetails: ${L.mensaje || '-'}`;
+        function sendLeadWhatsApp() { const L = botCtx.lead; const t = translations[currentLang];
+            const msg = `${t.wa_lead_title}\n${t.form_product}: ${L.producto || '-'}\n${t.bot_varieties}: ${L.variedad || '-'}\n${t.form_name}: ${L.nombre || '-'}\n${t.form_phone}: ${L.telefono || '-'}\n${t.form_message}: ${L.mensaje || '-'}`.replace(/\p{Extended_Pictographic}/gu, '');
             window.open('https://wa.me/212670964030?text=' + encodeURIComponent(msg), '_blank');
             botCtx.step = 'none'; botCtx.lead = {}; }
 
         function botBrain(raw) {
             const t = translations[currentLang]; const low = raw.toLowerCase().trim(); const L = botCtx.lead;
             if (raw === '##QUOTE##') return startQuote(null);
-            if (raw === '##QUOTE_NOW##') return startQuote(findProduct((L.producto || '').toLowerCase()) || (L.cat ? { ...productsData[L.cat].find(p => p.name[currentLang] === L.producto), cat: L.cat } : null));
+            /* FIX #5: usa lastProduct (sin crash al cambiar idioma) */
+            if (raw === '##QUOTE_NOW##') return startQuote(botCtx.lastProduct || null);
             if (raw === '##MARBLE##') return listColors('marbre');
             if (raw === '##GRANITE##') return listColors('granit');
             if (raw === '##HOURS##') return { text: t.bot_hours, replies: menuReplies() };
@@ -783,9 +785,11 @@
             if (raw === '##RESTART##') { resetChat(); return null; }
             if (raw === '##SEND##') { sendLeadWhatsApp(); return { text: t.bot_sent }; }
             if (raw === '##SKIP##') { if (botCtx.step === 'variety') { L.variedad = '-'; botCtx.step = 'name'; return { text: t.bot_q_name }; } L.mensaje = '-'; return confirmLead(); }
-            if (raw.startsWith('##COLORS:')) return listColors(raw.split(':')[1]);
-            if (raw.startsWith('##CAT:')) return listColors(raw.split(':')[1]);
-            if (raw.startsWith('##P:')) { const parts = raw.split(':'); const p = findP(parts[1], parts[2]); if (p) { L.producto = p.name[currentLang]; L.cat = p.cat; botCtx.step = 'variety'; return { text: t.bot_q_variety, replies: varietyReplies(p.cat, p.id) }; } }
+            /* FIX #1: parseo de tokens sin '##' residuales */
+            if (raw.startsWith('##COLORS:')) return listColors(raw.replace(/#/g, '').split(':')[1]);
+            if (raw.startsWith('##CAT:')) return listColors(raw.replace(/#/g, '').split(':')[1]);
+            const pm = raw.match(/^##P:(\w+):(\w+)##$/);
+            if (pm) { const p = findP(pm[1], pm[2]); if (p) { L.producto = p.name[currentLang]; L.cat = p.cat; botCtx.step = 'variety'; return { text: t.bot_q_variety, replies: varietyReplies(p.cat, p.id) }; } }
 
             if (botCtx.step === 'name') { L.nombre = raw; botCtx.step = 'phone'; return { text: t.bot_q_phone }; }
             if (botCtx.step === 'phone') { if (/^[0-9+\s\-()]{8,20}$/.test(raw)) { L.telefono = raw; botCtx.step = 'details'; return { text: t.bot_q_details, replies: [{ label: t.bot_skip, value: '##SKIP##' }] }; } return { text: t.bot_bad_phone }; }
@@ -852,7 +856,6 @@
             if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {})); }
             window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; document.querySelectorAll('.install-btn').forEach(b => b.style.display = 'flex'); });
             window.addEventListener('appinstalled', () => document.querySelectorAll('.install-btn').forEach(b => b.style.display = 'none'));
-            // Hint iOS
             const isIOS = /iPhone|iPad/.test(navigator.userAgent);
             const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
             if (isIOS && !standalone && !localStorage.getItem('iosHintShown')) {
