@@ -732,7 +732,7 @@
             document.getElementById('modalCategory').textContent = category === 'marbre' ? t.category_marble : t.category_granite;
             document.getElementById('modalVarieties').innerHTML = p.varieties[currentLang].map(v => `<span class="variety-tag">${v}</span>`).join('');
             const wa = encodeURIComponent(currentLang === 'fr' ? `Bonjour, je suis intéressé par un devis pour : ${p.name.fr}` : currentLang === 'es' ? `Hola, me interesa solicitar presupuesto para: ${p.name.es}` : `Hello, I am interested in a quote for: ${p.name.en}`);
-            document.getElementById('modalWaBtn').href = `https://wa.me/212670964030?text=${wa}`;
+            document.getElementById('modalWaBtn').href = `https://wa.me/212678190266?text=${wa}`;
         }
         function openProductModal(category, id) { activeModalProduct = { category, id }; populateModal(category, id); document.getElementById('productModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function openFromFooter(category, id) { document.getElementById(category === 'marbre' ? 'marble' : 'granite').scrollIntoView({ behavior: 'smooth' }); setTimeout(() => openProductModal(category, id), 600); }
@@ -770,7 +770,7 @@
             return { text: `${t.bot_sum_title}\n• ${t.form_product}: ${L.producto || '-'}\n• ${t.bot_varieties}: ${L.variedad || '-'}\n• ${t.form_name}: ${L.nombre || '-'}\n• ${t.form_phone}: ${L.telefono || '-'}\n• ${t.form_message}: ${L.mensaje || '-'}`, replies: [{ label: t.bot_send_btn, value: '##SEND##' }, { label: '🔄', value: '##RESTART##' }] }; }
         function sendLeadWhatsApp() { const L = botCtx.lead; const t = translations[currentLang];
             const msg = `${t.wa_lead_title}\n${t.form_product}: ${L.producto || '-'}\n${t.bot_varieties}: ${L.variedad || '-'}\n${t.form_name}: ${L.nombre || '-'}\n${t.form_phone}: ${L.telefono || '-'}\n${t.form_message}: ${L.mensaje || '-'}`.replace(/\p{Extended_Pictographic}/gu, '');
-            window.open('https://wa.me/212670964030?text=' + encodeURIComponent(msg), '_blank');
+            window.open('https://wa.me/212678190266?text=' + encodeURIComponent(msg), '_blank');
             botCtx.step = 'none'; botCtx.lead = {}; }
 
         function botBrain(raw) {
